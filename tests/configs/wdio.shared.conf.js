@@ -52,7 +52,7 @@ exports.config = {
   // See note in admin-investments spec.
   // Always add here new specs if available in the specs property below.
   specs: [
-    '../features/*.feature'
+    '../features/specs/*.feature'
   ],
   // Patterns to exclude.
   exclude: [
