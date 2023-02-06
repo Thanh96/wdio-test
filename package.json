@@ -1,4 +1,15 @@
 {
+  "scripts": {
+    "test-e2e-chrome": "wdio ./tests/configs/wdio.local.chrome.conf.js",
+    "test-e2e-safari": "wdio ./tests/configs/wdio.local.safari.conf.js",
+    "test-e2e-firefox": "wdio ./tests/configs/wdio.local.firefox.conf.js",
+    "test-e2e-iphone12pro": "wdio ./tests/configs/wdio.local.iphone12pro.conf.js",
+    "test-e2e-iphone8": "wdio ./tests/configs/wdio.local.iphone8.conf.js",
+    "test-e2e-google3XL": "wdio ./tests/configs/wdio.local.google3XL.conf.js",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "pretest": "rm -rf allure-results & rm -rf allure-report"
+  },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
@@ -11,16 +22,5 @@
     "@wdio/reporter": "^7.16.3",
     "wdio-geckodriver-service": "^2.1.0",
     "allure-commandline": "^2.13.8"
-  },
-  "scripts": {
-    "test-e2e-chrome": "wdio ./tests/configs/wdio.local.chrome.conf.js",
-    "test-e2e-safari": "wdio ./tests/configs/wdio.local.safari.conf.js",
-    "test-e2e-firefox": "wdio ./tests/configs/wdio.local.firefox.conf.js",
-    "test-e2e-iphone12pro": "wdio ./tests/configs/wdio.local.iphone12pro.conf.js",
-    "test-e2e-iphone8": "wdio ./tests/configs/wdio.local.iphone8.conf.js",
-    "test-e2e-google3XL": "wdio ./tests/configs/wdio.local.google3XL.conf.js",
-    "allure:report": "allure generate allure-results --clean -o allure-report",
-    "allure:open": "allure open allure-report",
-    "pretest": "rm -rf allure-results & rm -rf allure-report"
   }
 }

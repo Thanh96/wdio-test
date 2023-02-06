@@ -1,8 +1,9 @@
+import BaseAction from '../common/baseAction';
 /**
 * main page object containing all methods, selectors and functionality
 * that is shared across all page objects
 */
-export default class Page {
+export default class Page extends BaseAction {
 
     /**
      * Visit page

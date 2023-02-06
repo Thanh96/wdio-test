@@ -1,6 +1,11 @@
-import * as Constant from '../common/constants';
+// import * as Constant from '../common/constants';
 
 export default class BaseAction {
+  Constant = {
+    timeout: {
+      xl: 500
+    }
+  }
 
   async type(element, value) {
     await this.sleep(0.5);
