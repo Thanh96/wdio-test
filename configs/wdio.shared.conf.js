@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const allure = require("allure-commandline");
-// const TimeReporter = require("../common/customReporter");
+const TimeReporter = require("../tests/common/customReporter");
 
 global.pathToDownload = path.join(__dirname, "../", "logs/chromeDownloads");
 exports.config = {
@@ -51,9 +51,7 @@ exports.config = {
   // to run the invest and fundFlow specs before running the admin-investments spec.
   // See note in admin-investments spec.
   // Always add here new specs if available in the specs property below.
-  specs: [
-    '../features/specs/*.feature'
-  ],
+  specs: ['../tests/specs/*.feature'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -82,7 +80,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "error",
+  logLevel: "debug",
 
   // outputDir: path.resolve(__dirname, 'logs'),
   //
@@ -112,11 +110,11 @@ exports.config = {
   baseUrl: "https://webdriver.io/",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 100000,
+  waitforTimeout: 30000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
-  connectionRetryTimeout: 90000,
+  connectionRetryTimeout: 30000,
   //
   // Default request retries count
   connectionRetryCount: 3,
@@ -130,7 +128,7 @@ exports.config = {
   framework: "cucumber",
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ['./tests/features/step-definitions/*.steps.js'],
+    require: ['./tests/step-definitions/*.steps.js'],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -162,29 +160,29 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter.html
-  // reporters: [
-  //   "spec",
-  //   // [video, {
-  //   //   saveAllVideos           : true,       // If true, also saves videos for successful test cases
-  //   //   videoSlowdownMultiplier : 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
-  //   //   outputDir               : path.resolve(__dirname, "logs/videos")
-  //   // }],
-  //   // Disable until wdio version 7 support video recorder
-  //   [
-  //     "allure",
-  //     {
-  //       outputDir: "allure-results",
-  //       disableWebdriverStepsReporting: false,
-  //       disableWebdriverScreenshotsReporting: false,
-  //     },
-  //   ],
-  //   [
-  //     TimeReporter,
-  //     {
-  //       someOption: "foobar",
-  //     },
-  //   ],
-  // ],
+  reporters: [
+    "spec",
+    // [video, {
+    //   saveAllVideos           : true,       // If true, also saves videos for successful test cases
+    //   videoSlowdownMultiplier : 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
+    //   outputDir               : path.resolve(__dirname, "logs/videos")
+    // }],
+    // Disable until wdio version 7 support video recorder
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
+    [
+      TimeReporter,
+      {
+        someOption: "foobar",
+      },
+    ],
+  ],
   //
   // Options to be passed to Jasmine.
   jasmineOpts: {

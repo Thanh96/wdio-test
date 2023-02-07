@@ -1,12 +1,6 @@
-// import * as Constant from '../common/constants';
+import * as Constant from './constants';
 
 export default class BaseAction {
-  Constant = {
-    timeout: {
-      xl: 500
-    }
-  }
-
   async type(element, value) {
     await this.sleep(0.5);
     await element.setValue(value);
@@ -130,7 +124,6 @@ export default class BaseAction {
   }
 
   async waitPageLoaded() {
-    // not work with wdio >= v7.13.0
     await browser.waitUntil(() => {
       const state = browser.execute(() => {
         return document.readyState;
@@ -139,19 +132,23 @@ export default class BaseAction {
       return state === 'complete';
     },
       {
-        timeout: 60000, //60secs
+        timeout: 60000,
         timeoutMsg: 'Oops! Check your internet connection'
       });
   }
 
-  async waiForUrlContain(url) {
-    await browser.waitUntil(() => {
-      let pageUrl = browser.getUrl();
+  async waitForUrlContain(url) {
+    await browser.waitUntil(async() => {
+      let pageUrl = await browser.getUrl();
       return pageUrl.indexOf(url) > -1
     }, Constant.timeout.xl)
   }
 
   async sleep(s) {
     await browser.pause(s * 1000);
+  }
+
+  async verifyElementContainsText(element, text) {
+    await expect(element).toHaveText(text);
   }
 }

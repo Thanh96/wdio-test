@@ -10,7 +10,7 @@ export default class Page extends BaseAction {
      * @returns this 
      */
     visitPage() {
-        return browser.url('https://webdriver.io/');
+        return browser.url('/');
     }
 
     /**
@@ -18,6 +18,6 @@ export default class Page extends BaseAction {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     open(path) {
-        return browser.url(`https://webdriver.io/${path}`)
+        return browser.url(`/${path}`)
     }
 }
