@@ -32,8 +32,8 @@ Then('I see search result', async () => {
 
   console.log('Verify user is navigated to page')
   await homePage.waitForElementDisplayed(homePage.article_title);
-  console.log('text', item);
   await homePage.verifyElementContainsText(homePage.article_title, item);
+  await homePage.verifyElementContainsText(homePage.article_title, 'vy');
 });
 
 

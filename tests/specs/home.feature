@@ -3,10 +3,15 @@ Feature: Home Page
 		Given I am on the home page
 		Then I verify that user is navigated to home page
 
-	@focus
-	Scenario: User can search by keyword
+	Scenario Outline: User can search by keyword
 		Given I am on the home page
 		Then I verify that user is navigated to home page
 		When I click search btn
-		When I enter search input with value 'selector'
+		When I enter search input with value "<search>"
 		Then I see search result
+
+		Examples: 
+			| search   |
+			| selector | 
+
+	
