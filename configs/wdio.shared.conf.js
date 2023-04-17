@@ -463,8 +463,9 @@ exports.config = {
 
     if (!result.passed) {
       const spec = path.basename(global.specFileName, ".spec.js");
+      const name =  world.pickle.name;
 
-      await browser.saveScreenshot(path.join(dir, `${spec}.png`));
+      await browser.saveScreenshot(path.join(dir, `${spec}-${name}.png`));
     }
   },
   /**
