@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "test-e2e-headless": "wdio ./configs/wdio.local.chrome.headless.conf.js",
     "test-e2e-chrome": "wdio ./configs/wdio.local.chrome.conf.js",
     "test-e2e-safari": "wdio ./configs/wdio.local.safari.conf.js",
     "test-e2e-firefox": "wdio ./configs/wdio.local.firefox.conf.js",
